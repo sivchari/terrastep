@@ -40,8 +40,8 @@ func TestParseYML(t *testing.T) {
 							"plan",
 						},
 						Steps: []string{
-							"c",
-							"d",
+							"./c",
+							"./d",
 						},
 					},
 				},
