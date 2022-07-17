@@ -77,11 +77,17 @@ func runtf(ctx context.Context, cfg *Config) error {
 		t := t
 		eg.Go(func() error {
 			for _, s := range t.Steps {
-				if out, err := exec.CommandContext(egctx, "sh", "-c", fmt.Sprintf("cd %s && terraform init", p+"/"+s)).Output(); err != nil {
+				var trims string
+				if strings.HasPrefix(s, "./") {
+					trims = strings.TrimPrefix(s, "./")
+				} else {
+					trims = s
+				}
+				if out, err := exec.CommandContext(egctx, "sh", "-c", fmt.Sprintf("cd %s && terraform init", p+"/"+trims)).Output(); err != nil {
 					return fmt.Errorf("falied to exec terraform init err = %w out = %s", err, string(out))
 				}
 				for _, tac := range t.Tactics {
-					out, err := exec.CommandContext(egctx, "sh", "-c", fmt.Sprintf("cd %s && terraform %s", p+"/"+s, tac)).Output()
+					out, err := exec.CommandContext(egctx, "sh", "-c", fmt.Sprintf("cd %s && terraform %s", p+"/"+trims, tac)).Output()
 					if err != nil {
 						return fmt.Errorf("failed to exec terraform %s err = %w out = %s", tac, err, string(out))
 					}
