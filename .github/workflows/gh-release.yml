@@ -1,3 +1,5 @@
+name: gh-release
+
 on:
   push:
     branches:    
@@ -16,8 +18,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       - uses: pipe-cd/actions-gh-release@v2.3.6
         with:
           release_file: '**/RELEASE'

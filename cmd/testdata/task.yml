@@ -1,0 +1,19 @@
+tasks:
+  - name: 'run a'
+    tactics:
+      - validate
+      - fmt
+      - plan
+    steps:
+      - 'a'
+      - 'b'
+
+  - name: 'run c'
+    tactics:
+      - validate
+      - fmt
+      - plan
+    steps:
+      - 'c'
+      - 'd'
+
