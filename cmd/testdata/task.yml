@@ -14,6 +14,6 @@ tasks:
       - fmt
       - plan
     steps:
-      - 'c'
-      - 'd'
+      - './c'
+      - './d'
 
