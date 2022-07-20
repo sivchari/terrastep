@@ -17,7 +17,7 @@ func TestParseYML(t *testing.T) {
 	}{
 		{
 			name: "parse yml",
-			path: "testdata/task.yml",
+			path: "./testdata/task.yml",
 			want: &Config{
 				Tasks: []*Task{
 					{
