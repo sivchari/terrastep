@@ -1,4 +1,4 @@
-tasks:
+steps:
   - name: 'run a'
     tactics:
       - validate

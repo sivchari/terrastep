@@ -73,7 +73,7 @@ func runtf(ctx context.Context, cfg *Config) error {
 	if err != nil {
 		return err
 	}
-	for _, t := range cfg.Tasks {
+	for _, t := range cfg.Steps {
 		t := t
 		eg.Go(func() error {
 			for _, s := range t.Steps {
@@ -106,10 +106,10 @@ func runtf(ctx context.Context, cfg *Config) error {
 }
 
 type Config struct {
-	Tasks []*Task `yaml:"tasks"`
+	Steps []*Step `yaml:"steps"`
 }
 
-type Task struct {
+type Step struct {
 	Name    string   `yaml:"name"`
 	Tactics []string `yaml:"tactics"`
 	Steps   []string `yaml:"steps"`

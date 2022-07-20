@@ -2,7 +2,7 @@
 terrastep is a library which manages execution order of terraform.
 
 ```yml
-tasks:
+steps:
   - name: 'run a'
     tactics:
       - validate
